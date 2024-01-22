@@ -6,7 +6,7 @@ export class InMemoryOrgsRepository implements IOrgRepository {
   public db: Organization[] = []
 
   async create(data: Prisma.OrganizationCreateInput): Promise<Organization> {
-    const ong: Organization = {
+    const org: Organization = {
       id: randomUUID(),
       name: 'Teste ong',
       create_at: new Date(),
@@ -19,8 +19,8 @@ export class InMemoryOrgsRepository implements IOrgRepository {
       city: 'Testando',
       phone: '(11) 999999999',
     }
-    this.db.push(ong as unknown as Organization)
+    this.db.push(org as unknown as Organization)
 
-    return ong
+    return org
   }
 }
