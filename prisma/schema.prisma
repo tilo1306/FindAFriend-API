@@ -9,3 +9,96 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Old {
+  PUPPY
+  ADULT
+  SENIOR
+}
+
+enum Size {
+  SMALL
+  AVERAGE
+  BIG
+}
+
+enum EnergyLevel {
+  LOW
+  AVERAGE
+  HIGH
+}
+
+enum IndependenceLevel {
+  LOW
+  AVERAGE
+  HIGH
+}
+
+enum Environment {
+  OPEN
+  CLOSED
+}
+
+enum Gender {
+  Femea
+  Macho
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+model User {
+  id         String   @id @default(uuid())
+  name       String
+  email      String
+  password   String
+  created_at DateTime @default(now())
+
+  @@map("users")
+}
+
+model Organization {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  zip_code  String
+  address   String
+  state     String
+  city      String
+  phone     String
+  create_at DateTime @default(now())
+  Pet       Pet[]
+  role      Role     @default(MEMBER)
+
+  @@map("organizations")
+}
+
+model Pet {
+  id                 String            @id @default(uuid())
+  name               String
+  description        String
+  old                Old
+  size               Size
+  energy_level       EnergyLevel
+  independence_level IndependenceLevel
+  environment        Environment
+  gender             Gender
+  state              String
+  city               String
+  requiredNeeds      String[]
+  created_at         DateTime          @default(now())
+  ong                Organization      @relation(fields: [ong_id], references: [id])
+  ong_id             String
+  PetImages          PetImages[]
+}
+
+model PetImages {
+  id  String @id @default(uuid())
+  url String
+
+  pet    Pet    @relation(fields: [pet_id], references: [id])
+  pet_id String
+}
