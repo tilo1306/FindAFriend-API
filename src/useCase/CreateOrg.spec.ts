@@ -1,5 +1,5 @@
 import { CreateOrgUseCase } from './CreateOrg'
-import { InMemoryOrgsRepository } from '@/repositories/inMemory/InMemoryOrgRepository'
+import { InMemoryOrgsRepository } from '@/repositories/inMemory/InMemoryOrgsRepository'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { OrgAlreadyExistsError } from './errors/orgAlreadyExistsError'
 

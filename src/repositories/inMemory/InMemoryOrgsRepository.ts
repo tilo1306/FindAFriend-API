@@ -1,8 +1,8 @@
-import { $Enums, Organization, Prisma } from '@prisma/client'
-import { IOrgRepository } from '../IOrgRepository'
+import { Organization, Prisma } from '@prisma/client'
+import { IOrgsRepository } from '../IOrgsRepository'
 import { randomUUID } from 'node:crypto'
 
-export class InMemoryOrgsRepository implements IOrgRepository {
+export class InMemoryOrgsRepository implements IOrgsRepository {
   public db: Organization[] = []
 
   async create(data: Prisma.OrganizationCreateInput): Promise<Organization> {
