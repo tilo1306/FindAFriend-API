@@ -1,6 +1,7 @@
 import { CreateOrgUseCase } from './CreateOrg'
 import { InMemoryOrgsRepository } from '@/repositories/inMemory/InMemoryOrgRepository'
 import { beforeEach, describe, expect, it } from 'vitest'
+import { OrgAlreadyExistsError } from './errors/orgAlreadyExistsError'
 
 let orgRepository: InMemoryOrgsRepository
 let sut: CreateOrgUseCase
@@ -33,5 +34,24 @@ describe('Create ORG Use Case', () => {
     expect(org.state).toEqual(data.state)
     expect(org.city).toEqual(data.city)
     expect(org.phone).toEqual(data.phone)
+  })
+
+  it('Should not be able to register ORG name already exists', async () => {
+    const data = {
+      name: 'Teste ong',
+      email: 'teste@teste.com',
+      password: '123456',
+      zip_code: '123456',
+      address: 'Rua: teste',
+      state: 'teste',
+      city: 'Testando',
+      phone: '(11) 999999999',
+    }
+
+    await sut.execute(data)
+
+    await expect(() => sut.execute(data)).rejects.toBeInstanceOf(
+      OrgAlreadyExistsError,
+    )
   })
 })
