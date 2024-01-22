@@ -1,4 +1,4 @@
-import { Organization, Prisma } from '@prisma/client'
+import { $Enums, Organization, Prisma } from '@prisma/client'
 import { IOrgRepository } from '../IOrgRepository'
 import { randomUUID } from 'node:crypto'
 
@@ -15,5 +15,13 @@ export class InMemoryOrgsRepository implements IOrgRepository {
     this.db.push(org as unknown as Organization)
 
     return org
+  }
+
+  async findByName(name: string): Promise<Organization | null> {
+    const isOrg = this.db.find((org) => org.name === name)
+    if (!isOrg) {
+      return null
+    }
+    return isOrg
   }
 }
