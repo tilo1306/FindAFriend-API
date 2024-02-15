@@ -17,3 +17,25 @@
 - [] O usuário que quer adotar, entrará em contato com a ORG via WhatsApp;
 - [] Todos os filtros, além da cidade, são opcionais;
 - [] Para uma ORG acessar a aplicação como admin, ela precisa estar logada;
+
+
+
+## RFs (Requisitos funcionais)
+
+- [] Deve ser possível cadastrar usuário;
+- [] Deve ser possível se autenticar usuário;
+- [] Deve ser possível se logar com o Google;
+- [] Deve ser possível adicionar um projeto;
+- [] Deve ser possível visualizar os proprios projetos;
+- [] Deve ser possível visualizar detalhes do projeto;
+- [] Deve ser possível editar detalhes do projeto;
+- [] Deve ser possível deletar um projeto;
+- [] Deve ser possível visualizar os projeto de outras pessoas;
+
+## RNs (Regras de negócio)
+
+- [] O usuário não deve poder se cadastrar com um e-mail duplicado;
+- [] A senha cadastrada deve conter no minimo 8 caracteres contendo letras,numeros e caracteres especiais;
+- [] O usuário não deve poder cadastrar projeto com o mesmo Titulo;
+- [] O usuário não deve poder cadastrar projeto sem imagem,link e titulo;
+- [] O usuário não deve poder cadastrar projeto com pelo menos 1 tag;
