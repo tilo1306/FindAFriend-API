@@ -1,4 +1,4 @@
-import { IOrgRepository } from '@/repositories/IOrgRepository'
+import { IOrgsRepository } from '@/repositories/IOrgsRepository'
 import { Organization } from '@prisma/client'
 import { hash } from 'bcryptjs'
 import { OrgAlreadyExistsError } from './errors/orgAlreadyExistsError'
@@ -19,12 +19,13 @@ interface ICreateOrgUseCaseResponse {
 }
 
 export class CreateOrgUseCase {
-  constructor(private orgsRepository: IOrgRepository) {}
+  constructor(private orgsRepository: IOrgsRepository) {}
 
   async execute(
     data: ICreateOrgUseCaseRequest,
   ): Promise<ICreateOrgUseCaseResponse> {
     const orgWithSameName = await this.orgsRepository.findByName(data.name)
+
     if (orgWithSameName) {
       throw new OrgAlreadyExistsError()
     }
