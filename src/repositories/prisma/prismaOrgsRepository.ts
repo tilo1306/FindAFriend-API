@@ -17,4 +17,13 @@ export class PrismaOrgsRepository implements IOrgsRepository {
     })
     return org
   }
+
+  async findByEmail(email: string): Promise<Organization | null> {
+    const org = await prisma.organization.findUnique({
+      where: {
+        email,
+      },
+    })
+    return org
+  }
 }

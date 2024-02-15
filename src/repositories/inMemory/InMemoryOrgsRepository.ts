@@ -24,4 +24,12 @@ export class InMemoryOrgsRepository implements IOrgsRepository {
     }
     return isOrg
   }
+
+  async findByEmail(email: string): Promise<Organization | null> {
+    const isOrg = this.db.find((org) => org.email === email)
+    if (!isOrg) {
+      return null
+    }
+    return isOrg
+  }
 }
