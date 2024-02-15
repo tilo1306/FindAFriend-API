@@ -1,5 +1,5 @@
 export class OrgAlreadyExistsError extends Error {
   constructor() {
-    super('Name Organization already exists.')
+    super('Name Organization already or email exists.')
   }
 }
