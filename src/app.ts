@@ -9,7 +9,15 @@ import { ZodError } from 'zod'
 
 export const app = fastify({ logger: true })
 
-app.register(swagger)
+app.register(swagger, {
+  swagger: {
+    info: {
+      title: 'FindAFriend API',
+      description: 'Desafio Rocketseat',
+      version: '0.1.0',
+    },
+  },
+})
 app.register(orgsRoutes)
 
 app.register(swaggerUi, {
