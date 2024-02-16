@@ -1,5 +1,6 @@
-import { OrgAlreadyExistsError } from '@/useCase/errors/orgAlreadyExistsError'
-import { makeCreateOrgUseCase } from '@/useCase/factories/makeCreateOrgUseCase'
+import { OrgAlreadyExistsError } from '@/useCases/errors/orgAlreadyExistsError'
+import { makeCreateOrgUseCase } from '@/useCases/factories/makeCreateOrgUseCase'
+
 import { FastifyReply, FastifyRequest } from 'fastify'
 import z from 'zod'
 
