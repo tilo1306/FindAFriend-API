@@ -3,9 +3,12 @@ import swagger from '@fastify/swagger'
 import swaggerUi from '@fastify/swagger-ui'
 import { SwaggerTheme } from 'swagger-themes'
 import { SwaggerThemeNameEnum } from 'swagger-themes/build/enums/swagger-theme-name'
-import { orgsRoutes } from './http/controllers/orgs/routes'
+import { orgsRoutes } from './routes/orgsRoutes.routes'
+import { authenticateRoute } from './routes/authenticateRoutes.routes'
 import { env } from './env'
 import { ZodError } from 'zod'
+import fastifyJwt from '@fastify/jwt'
+import fastifyCookie from '@fastify/cookie'
 
 export const app = fastify({ logger: true })
 
@@ -18,7 +21,22 @@ app.register(swagger, {
     },
   },
 })
+
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+  cookie: {
+    cookieName: 'refreshToken',
+    signed: false,
+  },
+  sign: {
+    expiresIn: '10m',
+  },
+})
+
+app.register(fastifyCookie)
+
 app.register(orgsRoutes)
+app.register(authenticateRoute)
 
 app.register(swaggerUi, {
   routePrefix: 'docs',
