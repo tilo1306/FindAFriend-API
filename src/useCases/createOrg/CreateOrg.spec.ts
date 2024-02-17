@@ -34,6 +34,7 @@ describe('Create ORG Use Case', () => {
     expect(org.state).toEqual(data.state)
     expect(org.city).toEqual(data.city)
     expect(org.phone).toEqual(data.phone)
+    expect(org.role).toEqual('ADMIN')
   })
 
   it('Should not be able to register ORG name already exists', async () => {
