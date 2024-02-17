@@ -9,6 +9,7 @@ import { env } from './env'
 import { ZodError } from 'zod'
 import fastifyJwt from '@fastify/jwt'
 import fastifyCookie from '@fastify/cookie'
+import { usersRoutes } from './routes/usersRoutes.routes'
 
 export const app = fastify({ logger: true })
 
@@ -37,6 +38,7 @@ app.register(fastifyCookie)
 
 app.register(orgsRoutes)
 app.register(authenticateRoute)
+app.register(usersRoutes)
 
 app.register(swaggerUi, {
   routePrefix: 'docs',
