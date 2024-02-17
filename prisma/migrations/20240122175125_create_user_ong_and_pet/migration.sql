@@ -17,7 +17,7 @@ CREATE TYPE "Environment" AS ENUM ('OPEN', 'CLOSED');
 CREATE TYPE "Gender" AS ENUM ('Femea', 'Macho');
 
 -- CreateEnum
-CREATE TYPE "Role" AS ENUM ('ADMIN', 'MEMBER');
+CREATE TYPE "Role" AS ENUM ('ORG', 'MEMBER');
 
 -- CreateTable
 CREATE TABLE "users" (
@@ -42,7 +42,7 @@ CREATE TABLE "organizations" (
     "city" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
     "create_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "role" "Role" NOT NULL DEFAULT 'MEMBER',
+    "role" "Role" NOT NULL DEFAULT 'ORG',
 
     CONSTRAINT "organizations_pkey" PRIMARY KEY ("id")
 );

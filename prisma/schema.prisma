@@ -45,7 +45,7 @@ enum Gender {
 }
 
 enum Role {
-  ADMIN
+  ORG
   MEMBER
 }
 
@@ -55,6 +55,7 @@ model User {
   email      String
   password   String
   created_at DateTime @default(now())
+  role       Role     @default(MEMBER)
 
   @@map("users")
 }
@@ -71,7 +72,7 @@ model Organization {
   phone     String
   create_at DateTime @default(now())
   Pet       Pet[]
-  role      Role     @default(MEMBER)
+  role      Role     @default(ORG)
 
   @@map("organizations")
 }
