@@ -51,9 +51,9 @@ describe('Register (e2e)', () => {
     })
 
     expect(res.statusCode).toEqual(409)
-    // expect(res.body.message).toEqual(
-    //   'Organization name or email already exists.',
-    // )
+    expect(res.body.message).toEqual(
+      'Organization name or email already exists.',
+    )
   })
 
   it('Should not be able to register email aready exits', async () => {
@@ -80,11 +80,10 @@ describe('Register (e2e)', () => {
       city: 'teste',
       phone: '11998877445566',
     })
-    console.log(res)
 
     expect(res.statusCode).toEqual(409)
-    // expect(res.body.message).toEqual(
-    //   'Organization name or email already exists.',
-    // )
+    expect(res.body.message).toEqual(
+      'Organization name or email already exists.',
+    )
   })
 })
