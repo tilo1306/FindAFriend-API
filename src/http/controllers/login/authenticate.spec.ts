@@ -16,6 +16,12 @@ describe('Login (e2e)', () => {
       city: 'teste',
       phone: '11998877445566',
     })
+
+    await request(app.server).post('/users').send({
+      name: 'Dougrilhos Sucrilhos',
+      email: 'test@test.com',
+      password: '123456789',
+    })
   })
   afterAll(async () => {
     await app.close()
@@ -45,6 +51,39 @@ describe('Login (e2e)', () => {
   })
 
   it('should not be able to authenticate org with wrong password', async () => {
+    const res = await request(app.server).post('/sessions').send({
+      email: 'test@test.com',
+      password: '987654321',
+    })
+    expect(res.statusCode).toEqual(400)
+    expect(res.body).toEqual({
+      message: expect.any(String),
+    })
+  })
+
+  it('should be able to authenticate user', async () => {
+    const res = await request(app.server).post('/sessions').send({
+      email: 'test@test.com',
+      password: '123456789',
+    })
+
+    expect(res.statusCode).toEqual(200)
+    expect(res.body).toEqual({
+      token: expect.any(String),
+    })
+  })
+  it('should not be able to authenticate user with wrong email', async () => {
+    const res = await request(app.server).post('/sessions').send({
+      email: 'error@test.com',
+      password: '123456789',
+    })
+    expect(res.statusCode).toEqual(400)
+    expect(res.body).toEqual({
+      message: expect.any(String),
+    })
+  })
+
+  it('should not be able to authenticate user with wrong password', async () => {
     const res = await request(app.server).post('/sessions').send({
       email: 'test@test.com',
       password: '987654321',
