@@ -1,5 +1,5 @@
+import { authenticate } from '@/http/controllers/login/authenticate'
 import { FastifyInstance } from 'fastify'
-import { authenticate } from '../http/controllers/login/authenticate'
 
 export async function authenticateRoute(app: FastifyInstance) {
   app.post(
