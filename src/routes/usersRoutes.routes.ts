@@ -1,4 +1,5 @@
 import { create } from '@/http/controllers/users/create'
+import { refresh } from '@/http/controllers/users/refresh'
 import { FastifyInstance } from 'fastify'
 
 export async function usersRoutes(app: FastifyInstance) {
@@ -34,4 +35,6 @@ export async function usersRoutes(app: FastifyInstance) {
     },
     create,
   )
+
+  app.patch('/token/refresh', refresh)
 }
