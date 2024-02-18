@@ -1,4 +1,4 @@
-import { PrismaOrgsRepository } from '@/repositories/prisma/prismaOrgsRepository'
+import { PrismaOrgsRepository } from '@/repositories/prisma/PrismaOrgsRepository'
 import { CreateOrgUseCase } from '../createOrg/CreateOrg'
 
 export function makeCreateOrgUseCase() {
