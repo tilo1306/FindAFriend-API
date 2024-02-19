@@ -10,6 +10,7 @@ import { ZodError } from 'zod'
 import fastifyJwt from '@fastify/jwt'
 import fastifyCookie from '@fastify/cookie'
 import { usersRoutes } from './routes/usersRoutes.routes'
+import { petsRoute } from './routes/petsRoutes.routes'
 
 export const app = fastify({ logger: true })
 
@@ -19,6 +20,15 @@ app.register(swagger, {
       title: 'FindAFriend API',
       description: 'Desafio Rocketseat',
       version: '0.1.0',
+      components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
     },
   },
 })
@@ -39,6 +49,7 @@ app.register(fastifyCookie)
 app.register(orgsRoutes)
 app.register(authenticateRoute)
 app.register(usersRoutes)
+app.register(petsRoute)
 
 app.register(swaggerUi, {
   routePrefix: 'docs',
