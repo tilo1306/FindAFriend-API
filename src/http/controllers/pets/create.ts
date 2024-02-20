@@ -27,6 +27,12 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     petImage: z.string(),
   })
 
+  const { role } = request.user
+
+  if (role !== 'ORG') {
+    return reply.status(401).send({ message: 'Unauthorized' })
+  }
+
   const body = registerBodySchema.parse(request.body)
 
   try {
