@@ -16,4 +16,12 @@ export class InMemoryPetImagensRepository implements IPetImagensRepository {
 
     return petImagens
   }
+
+  async findPetImage(petId: string): Promise<PetImages[]> {
+    const petImagens: PetImages[] = this.db.filter(
+      (petImage) => petImage.pet_id === petId,
+    )
+
+    return petImagens
+  }
 }
