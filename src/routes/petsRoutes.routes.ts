@@ -11,6 +11,11 @@ export async function petsRoute(app: FastifyInstance) {
         summary: 'Create a pet',
         description: 'Create a new pet',
         tags: ['Pets'],
+        security: [
+          {
+            bearerAuth: [],
+          },
+        ],
         body: {
           type: 'object',
           properties: {
@@ -31,6 +36,13 @@ export async function petsRoute(app: FastifyInstance) {
           201: {
             description: 'Succesful response',
             type: 'object',
+          },
+          401: {
+            description: 'Succesful response',
+            type: 'object',
+            properties: {
+              message: { type: 'string' },
+            },
           },
         },
       },
