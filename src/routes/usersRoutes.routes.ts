@@ -36,5 +36,32 @@ export async function usersRoutes(app: FastifyInstance) {
     create,
   )
 
-  app.patch('/token/refresh', refresh)
+  app.patch(
+    '/token/refresh',
+    {
+      schema: {
+        summary: 'Refresh Token',
+        description: 'Refresh Token',
+        tags: ['Token'],
+
+        response: {
+          200: {
+            description: 'Succesful response',
+            type: 'object',
+            properties: {
+              token: { type: 'string' },
+            },
+          },
+          401: {
+            description: 'Unauthorized',
+            type: 'object',
+            properties: {
+              message: { type: 'string' },
+            },
+          },
+        },
+      },
+    },
+    refresh,
+  )
 }
