@@ -1,9 +1,10 @@
 import { InMemoryOrgsRepository } from '@/repositories/inMemory/InMemoryOrgsRepository'
-import { InMemoryUsersRepository } from '@/repositories/inMemory/inMemoryUsersRepository'
+
 import { beforeEach, describe, expect, it } from 'vitest'
 import { AuthenticateUseCase } from './Authenticate'
 import { hash } from 'bcryptjs'
 import { InvalidCredentialsError } from '../errors/invalidCredentialsError'
+import { InMemoryUsersRepository } from '@/repositories/inMemory/InMemoryUsersRepository'
 
 let orgRepository: InMemoryOrgsRepository
 let userRepository: InMemoryUsersRepository
