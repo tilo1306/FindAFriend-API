@@ -13,4 +13,14 @@ export class PrismaPetImagensRepository implements IPetImagensRepository {
     })
     return petImagem
   }
+
+  async findPetImage(petId: string): Promise<PetImages[]> {
+    const petImagens: PetImages[] = await prisma.petImages.findMany({
+      where: {
+        pet_id: { equals: petId },
+      },
+    })
+
+    return petImagens
+  }
 }
