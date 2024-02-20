@@ -20,15 +20,32 @@ app.register(swagger, {
       title: 'FindAFriend API',
       description: 'Desafio Rocketseat',
       version: '0.1.0',
-      components: {
-      securitySchemes: {
-        bearerAuth: {
-          type: 'http',
-          scheme: 'bearer',
-          bearerFormat: 'JWT',
-        },
+      contact: {
+        email: 'doug1306@gmail.com',
       },
     },
+
+    schemes: ['http', 'https'],
+    consumes: ['application/json'],
+    produces: ['application/json'],
+    securityDefinitions: {
+      bearerAuth: {
+        type: 'apiKey',
+        name: 'token',
+        in: 'header',
+        description:
+          'Enter the token with the `Bearer: ` prefix, e.g. "Bearer abcde12345".',
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
+    responses: {
+      UnauthorizedError: {
+        description: 'Access token is missing or invalid',
+      },
     },
   },
 })
