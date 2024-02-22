@@ -53,7 +53,7 @@ describe('Authenticate Use Case', () => {
 
     expect(id).toEqual(expect.any(String))
     expect(name).toEqual('Teste ong')
-    expect(role).toEqual('ORG')
+    expect(role).toEqual('ADMIN')
   })
 
   it('should not be able to authenticate user with wrong email', async () => {

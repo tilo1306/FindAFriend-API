@@ -45,7 +45,7 @@ enum Gender {
 }
 
 enum Role {
-  ORG
+  ADMIN
   MEMBER
 }
 
@@ -72,7 +72,7 @@ model Organization {
   phone     String
   create_at DateTime @default(now())
   Pet       Pet[]
-  role      Role     @default(ORG)
+  role      Role     @default(ADMIN)
 
   @@map("organizations")
 }

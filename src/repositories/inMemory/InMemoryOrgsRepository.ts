@@ -10,7 +10,7 @@ export class InMemoryOrgsRepository implements IOrgsRepository {
       id: randomUUID(),
       ...data,
       create_at: new Date(),
-      role: 'ORG',
+      role: 'ADMIN',
     }
     this.db.push(org as unknown as Organization)
 
