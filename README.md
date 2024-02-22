@@ -1,41 +1,76 @@
-# FindAFriend-API
+
+<p align='center'><img width='400' src="./.github/logo.svg"/></p>
+
+ <p align='center'>
+
+<img src="https://img.shields.io/github/repo-size/Savio-Anjos/API-FindAFriend?color=1890FF">
+<img src="https://img.shields.io/github/languages/count/Savio-Anjos/API-FindAFriend?color=1890FF">
+<img src="https://img.shields.io/github/last-commit/Savio-Anjos/API-FindAFriend?color=1890FF">
+</p>
+
+## 🚀 Tecnologias
+
+Esse projeto está utilizando as seguintes tecnologias:
+
+- [Node](https://nodejs.org/en)
+- [Fastify](https://fastify.dev/)
+- [Swagger](<https://swagger.io/>)
+- [Vitest](https://vitest.dev/)
+- [Docker](https://www.docker.com/)
+- [Prisma](https://www.prisma.io//)
+
+## 📜 Descrição
+
+Esse projeto consiste em uma API para uma aplicação de adoção de animais,
+nele foi utilizado padrões de arquitetura de software e foram desenvolvidos
+testes unitários e E2E.
+
+## ⚙️ Como funciona?
 
 ## RFs (Requisitos funcionais)
 
-- [] Deve ser possível cadastrar um pet;
-- [] Deve ser possível listar todos os pets disponíveis para adoção em uma cidade;
-- [] Deve ser possível filtrar pets por suas características;
-- [] Deve ser possível visualizar detalhes de um pet para adoção;
-- [] Deve ser possível se cadastrar como uma ORG;
-- [] Deve ser possível realizar login como uma ORG;
+- [x] É possível cadastrar um pet
+- [x] É possível listar todos os pets disponíveis para adoção em uma cidade
+- [x] É possível filtrar pets por suas características
+- [x] É possível visualizar detalhes de um pet para adoção
+- [x] É possível deletar um pet
+- [x] É possível se cadastrar
+- [x] É possível realizar login
+- [x] É possível realizar login com github
+- [x] É possível se cadastrar como uma ORG
+- [x] É possível realizar login como uma ORG
 
 ## RNs (Regras de negócio)
 
-- [] Para listar os pets, obrigatoriamente precisamos informar a cidade;
-- [] Uma ORG precisa ter um endereço e um número de WhatsApp;
-- [] Um pet deve estar ligado a uma ORG;
-- [] O usuário que quer adotar, entrará em contato com a ORG via WhatsApp;
-- [] Todos os filtros, além da cidade, são opcionais;
-- [] Para uma ORG acessar a aplicação como admin, ela precisa estar logada;
+- [x] Para listar os pets, obrigatoriamente precisamos informar a cidade
+- [x] Uma ORG precisa ter um endereço e um número de WhatsApp
+- [x] Um pet deve estar ligado a uma ORG
+- [x] Todos os filtros, além da cidade, são opcionais
 
+## 🎲 Como usar o projeto?
 
+### Clone esse repositório
 
-## RFs (Requisitos funcionais)
+```bash
+git clone https://github.com/tilo1306/FindAFriend-API.git
+```
 
-- [] Deve ser possível cadastrar usuário;
-- [] Deve ser possível se autenticar usuário;
-- [] Deve ser possível se logar com o Google;
-- [] Deve ser possível adicionar um projeto;
-- [] Deve ser possível visualizar os proprios projetos;
-- [] Deve ser possível visualizar detalhes do projeto;
-- [] Deve ser possível editar detalhes do projeto;
-- [] Deve ser possível deletar um projeto;
-- [] Deve ser possível visualizar os projeto de outras pessoas;
+### Navegue até o diretório do projeto
 
-## RNs (Regras de negócio)
+```bash
+cd FindAFriend-API
+```
 
-- [] O usuário não deve poder se cadastrar com um e-mail duplicado;
-- [] A senha cadastrada deve conter no minimo 8 caracteres contendo letras,numeros e caracteres especiais;
-- [] O usuário não deve poder cadastrar projeto com o mesmo Titulo;
-- [] O usuário não deve poder cadastrar projeto sem imagem,link e titulo;
-- [] O usuário não deve poder cadastrar projeto com pelo menos 1 tag;
+### Execute atravez do docker
+
+```bash
+docker compose up -d
+```
+
+### Acessar ao swagger
+
+```bash
+http://localhost:3333/docs/static/index.html
+```
+
+<p align='center'><img width='100%' src="./.github/swagger.gif"/></p>
